@@ -1,16 +1,12 @@
 import Head from 'next/head';
-import useSWR from 'swr';
-import Spell from '../components/spell';
+import DMSpell, { DMSPELLS_SPELL } from '../components/spell';
 import React from 'react';
+import { gql } from "@apollo/client";
+import createApolloClient from "../apollo-client";
+import {Spell} from '../src/__generated__/graphql'
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-export default function Home() {
-  const { data, error } = useSWR('/api/staticdata', fetcher);
- 
-  if (error) return <div>Failed to load</div>;
-  if (!data) return <div>Loading...</div>;
-
+export default function Home({spells}: {spells: Array<Spell>}) {
+  if (!spells) return <div>Loading...</div>;
   return (
     <div>
       <Head>
@@ -19,8 +15,27 @@ export default function Home() {
       </Head> 
 
       <main>
-        {data.spells.map((spell: any) => <Spell spell={spell} />)}
+        {spells.map((spell: Spell) => <DMSpell spell={spell} />)}
       </main>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const client = createApolloClient();
+  const { data } = await client.query({
+    query: gql`
+      query Spells {
+        spells {
+          ...DMSpells_Spell
+        }
+      }
+      ${DMSPELLS_SPELL}
+    `,
+  });
+  return {
+    props: {
+      spells: data.spells,
+    },
+  };
 }
