@@ -33,7 +33,6 @@ export default function Home() {
   });
 
   const handleScroll = ({ currentTarget }: {currentTarget: any}) => {
-    console.log('scroll baby')
     const shouldFetchMore = currentTarget.scrollTop + currentTarget.clientHeight >= currentTarget.scrollHeight;
     if (shouldFetchMore) {
       fetchMore({
@@ -48,7 +47,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>DnD Companion</title>
         <link rel="icon" href="/favicon.ico" />
       </Head> 
 
