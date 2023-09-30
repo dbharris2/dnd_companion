@@ -28,7 +28,7 @@ type Props = {
 
 export default function DMSpell({spell}: Props) {
   return (
-    <div className="flex flex-col border-solid border-2 hover:border-sky-300 bg-slate-100 m-2 p-2 rounded">
+    <div className="flex flex-col border-solid border-2 hover:border-sky-300 bg-slate-100 p-4 rounded">
       <div className="flex flex-row text-xl justify-between">
         <div className="font-semibold text-xl">{spell.name}</div>
         <div>Level: {spell.level}</div>
