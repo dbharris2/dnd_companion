@@ -8,6 +8,7 @@ const createApolloClient = () => {
       typePolicies: {
         Query: {
           fields: {
+            monsters: concatPagination(),
             spells: concatPagination(),
           }
         }

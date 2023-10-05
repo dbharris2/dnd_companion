@@ -4,6 +4,7 @@ import Link from 'next/link';
 export default function Home() {
   const buttons = [
     {href: "/spells", value: "Spells"},
+    {href: "/monsters", value: "Monsters"},
   ]
   return (
     <div className="flex flex-col space-y-2">

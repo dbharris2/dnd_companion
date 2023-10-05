@@ -1,21 +1,21 @@
-import DMSpell, { DMSPELLS_SPELL } from '../components/spell';
 import React, { useState } from 'react';
 import { gql, useQuery } from "@apollo/client";
-import {Spell} from '../src/__generated__/graphql'
+import {Monster} from '../src/__generated__/graphql'
 import LoadingIndicator from '../components/loading-indicator';
+import DMMonster, { DMMONSTERS_MONSTER } from '../components/monster';
 
-const SpellsQuery = gql`
-  query Spells($name: String, $limit: Int!, $skip: Int) {
-    spells(name: $name, limit: $limit, skip: $skip) {
-      ...DMSpells_Spell
+const MonstersQuery = gql`
+  query Monsters($name: String, $limit: Int!, $skip: Int) {
+    monsters(name: $name, limit: $limit, skip: $skip) {
+      ...DMMonsters_Monster
     }
   }
-  ${DMSPELLS_SPELL}
+  ${DMMONSTERS_MONSTER}
 `;
 
 const PAGINATION_AMOUNT = 10;
 
-function useSpellFilters() {
+function useMonsterFilters() {
   const [filter, setFilter] = useState<string>();
   const updateFilter = (value: string) => setFilter(value);
   return {
@@ -25,9 +25,9 @@ function useSpellFilters() {
 }
 
 
-export default function Spells() {
-  const { operations, models } = useSpellFilters();
-  const { data, loading, error, fetchMore, refetch } = useQuery(SpellsQuery, {
+export default function Monsters() {
+  const { operations, models } = useMonsterFilters();
+  const { data, loading, error, fetchMore, refetch } = useQuery(MonstersQuery, {
     notifyOnNetworkStatusChange: true,
     variables: {
       limit: PAGINATION_AMOUNT,
@@ -35,11 +35,13 @@ export default function Spells() {
     },
   });
 
+  console.log(data?.monsters)
+
   const handleScroll = ({ currentTarget }: {currentTarget: any}) => {
     const shouldFetchMore = currentTarget.scrollTop + currentTarget.clientHeight >= currentTarget.scrollHeight;
     if (shouldFetchMore) {
       fetchMore({
-        variables: {skip: data?.spells?.length ?? 0},
+        variables: {skip: data?.monsters?.length ?? 0},
       });
     }
   };
@@ -59,8 +61,8 @@ export default function Spells() {
           }
         }} 
         />
-        <div className="h-full overflow-scroll space-y-2" onScroll={handleScroll}>
-          {data?.spells.map((spell: Spell, index: number) => <DMSpell key={index} spell={spell} />)}
+        <div className="h-full w-full overflow-scroll space-y-2" onScroll={handleScroll}>
+          {data?.monsters.map((monster: Monster, index: number) => <DMMonster key={index} monster={monster} />)}
         </div>
         {loading ? <LoadingIndicator /> : null}
     </div>
