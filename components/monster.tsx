@@ -31,9 +31,9 @@ type Props = {
 
 export default function DMMonster({monster}: Props) {
   return (
-    <div className="flex flex-row">
-      {monster.image ? <img className="object-cover w-1/4" src={`https://www.dnd5eapi.co${monster.image}`} /> : null}
-      <div className="flex flex-col border-solid border-2 hover:border-sky-300 bg-slate-100 p-4 rounded w-full">
+    <div className="flex flex-row space-x-2 hover:border-sky-300 bg-slate-100 border-solid border-2 p-2 rounded w-full">
+       {monster.image ? <img className="object-contain w-1/4" src={`https://www.dnd5eapi.co${monster.image}`} /> : null}
+      <div className="flex flex-col w-full">
         <div className="font-semibold text-xl">{monster.name}</div>
         <div className="italic lowercase">{monster.size} {monster.type}, {monster.alignment}</div>
         {monster.desc ? <ReactMarkdown className="prose max-w-none" remarkPlugins={[remarkGfm]}>{`${monster.desc}`}</ReactMarkdown> : null}
