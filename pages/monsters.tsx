@@ -35,8 +35,6 @@ export default function Monsters() {
     },
   });
 
-  console.log(data?.monsters)
-
   const handleScroll = ({ currentTarget }: {currentTarget: any}) => {
     const shouldFetchMore = currentTarget.scrollTop + currentTarget.clientHeight >= currentTarget.scrollHeight;
     if (shouldFetchMore) {
