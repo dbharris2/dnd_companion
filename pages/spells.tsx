@@ -59,7 +59,7 @@ export default function Spells() {
           }
         }} 
         />
-        <div className="h-full overflow-scroll space-y-2" onScroll={handleScroll}>
+        <div className={data?.spells.length === 0 ? "h-0" : "h-full" + "h-full overflow-scroll space-y-2"} onScroll={handleScroll}>
           {data?.spells.map((spell: Spell, index: number) => <DMSpell key={index} spell={spell} />)}
         </div>
         {loading ? <LoadingIndicator /> : null}

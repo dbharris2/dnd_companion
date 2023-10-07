@@ -59,7 +59,7 @@ export default function Monsters() {
           }
         }} 
         />
-        <div className="h-full w-full overflow-scroll space-y-2" onScroll={handleScroll}>
+        <div className={data?.monsters.length === 0 ? "h-0" : "h-full" + "w-full overflow-scroll space-y-2"} onScroll={handleScroll}>
           {data?.monsters.map((monster: Monster, index: number) => <DMMonster key={index} monster={monster} />)}
         </div>
         {loading ? <LoadingIndicator /> : null}
