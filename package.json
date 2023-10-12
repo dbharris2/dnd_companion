@@ -6,7 +6,9 @@
     "start": "next start",
     "compile": "graphql-codegen",
     "watch": "graphql-codegen -w",
-    "check-lint": "eslint . --ext ts --ext tsx --ext js"
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "check-format": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@apollo/client": "^3.8.4",
@@ -37,6 +39,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "postcss": "^8.4.31",
+    "prettier": "3.0.3",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
   }

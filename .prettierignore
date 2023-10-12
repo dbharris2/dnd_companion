@@ -17,3 +17,6 @@ next-env.d.ts
 *.json
 public
 *.config.js
+
+# readme
+/README
