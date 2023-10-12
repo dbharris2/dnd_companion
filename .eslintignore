@@ -1,0 +1,16 @@
+# next.js
+/.next/
+next-env.d.ts
+
+# eslint
+/.eslintrc.js
+
+# generated
+/src/__generated__/
+/codegen.ts
+
+# dependencies
+/node_modules
+*.json
+public
+*.config.js

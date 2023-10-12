@@ -1,4 +1,6 @@
-export default function LoadingIndicator() {
+import React from 'react'
+
+export default function LoadingIndicator (): React.JSX.Element {
   return (
     <div role="status">
       <svg className="w-8 h-8 animate-spin fill-slate-100 dark:text-slate-400" viewBox="0 0 100 100">
