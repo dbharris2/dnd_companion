@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { type Monster } from "src/__generated__/graphql";
 import LoadingIndicator from "components/loading-indicator";
 import DMMonster, { DMMONSTERS_MONSTER } from "components/monster";
+import React, { useState } from "react";
+import { type Monster } from "src/__generated__/graphql";
 
 const MonstersQuery = gql`
   query Monsters($name: String, $limit: Int!, $skip: Int) {
@@ -30,8 +30,8 @@ function useMonsterFilters(): {
 }
 
 export default function Monsters(): React.JSX.Element {
-  const { operations, models } = useMonsterFilters();
-  const { data, loading, error, fetchMore, refetch } = useQuery(MonstersQuery, {
+  const { models, operations } = useMonsterFilters();
+  const { data, error, fetchMore, loading, refetch } = useQuery(MonstersQuery, {
     notifyOnNetworkStatusChange: true,
     variables: {
       limit: PAGINATION_AMOUNT,
@@ -56,8 +56,6 @@ export default function Monsters(): React.JSX.Element {
     <div className="flex flex-col h-screen space-y-2 items-center p-2">
       <input
         className="w-full bg-zinc-200 border-solid border-2 focus:border-sky-300 rounded px-4"
-        type="text"
-        placeholder="Search..."
         onChange={(e) => {
           operations.updateFilter(e.target.value);
         }}
@@ -66,6 +64,8 @@ export default function Monsters(): React.JSX.Element {
             void refetch({ name: models.filter });
           }
         }}
+        placeholder="Search..."
+        type="text"
       />
       <div
         className={

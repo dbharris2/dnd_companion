@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
 export default function Home(): React.JSX.Element {
   const buttons = [
@@ -13,10 +13,10 @@ export default function Home(): React.JSX.Element {
       </div>
       <div className="flex flex-col p-2 space-y-2">
         {buttons.map((button) => (
-          <Link key={button.value} href={button.href} passHref>
+          <Link href={button.href} key={button.value} passHref>
             <button
-              type="button"
               className="w-full rounded bg-slate-800 hover:bg-slate-500 text-white text-xs uppercase p-4 font-bold"
+              type="button"
             >
               {button.value}
             </button>

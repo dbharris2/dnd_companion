@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import createApolloClient from "apollo-client";
-import "styles/global.css";
 import React from "react";
+import "styles/global.css";
 
 interface Props {
   Component: React.FC;

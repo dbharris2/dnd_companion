@@ -6,6 +6,7 @@ module.exports = {
     "extends": [
         "standard-with-typescript",
         "plugin:react/recommended",
+        "plugin:perfectionist/recommended-natural",
         "prettier"
     ],
     "overrides": [
@@ -26,8 +27,16 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "perfectionist"
     ],
     "rules": {
+        "perfectionist/sort-objects": [
+            "error",
+            {
+                "type": "natural",
+                "order": "asc"
+            }
+        ]
     }
 }

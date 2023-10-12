@@ -1,8 +1,8 @@
-import React from "react";
-import { type Monster } from "src/__generated__/graphql";
 import { gql } from "@apollo/client";
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { type Monster } from "src/__generated__/graphql";
 
 export const DMMONSTERS_MONSTER = gql`
   fragment DMMonsters_Monster on Monster {
@@ -72,7 +72,7 @@ function BaseRow({
   value,
 }: {
   title: string;
-  value: string | number;
+  value: number | string;
 }): React.JSX.Element {
   return (
     <div className="flex flex-row">

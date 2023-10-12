@@ -1,8 +1,8 @@
+import { gql, useQuery } from "@apollo/client";
+import LoadingIndicator from "components/loading-indicator";
 import DMSpell, { DMSPELLS_SPELL } from "components/spell";
 import React, { useState } from "react";
-import { gql, useQuery } from "@apollo/client";
 import { type Spell } from "src/__generated__/graphql";
-import LoadingIndicator from "components/loading-indicator";
 
 const SpellsQuery = gql`
   query Spells($name: String, $limit: Int!, $skip: Int) {
@@ -30,8 +30,8 @@ function useSpellFilters(): {
 }
 
 export default function Spells(): React.JSX.Element {
-  const { operations, models } = useSpellFilters();
-  const { data, loading, error, fetchMore, refetch } = useQuery(SpellsQuery, {
+  const { models, operations } = useSpellFilters();
+  const { data, error, fetchMore, loading, refetch } = useQuery(SpellsQuery, {
     notifyOnNetworkStatusChange: true,
     variables: {
       limit: PAGINATION_AMOUNT,
@@ -56,8 +56,6 @@ export default function Spells(): React.JSX.Element {
     <div className="flex flex-col h-screen space-y-2 items-center p-2">
       <input
         className="w-full bg-zinc-200 border-solid border-2 focus:border-sky-300 rounded px-4"
-        type="text"
-        placeholder="Search..."
         onChange={(e) => {
           operations.updateFilter(e.target.value);
         }}
@@ -66,6 +64,8 @@ export default function Spells(): React.JSX.Element {
             void refetch({ name: models.filter });
           }
         }}
+        placeholder="Search..."
+        type="text"
       />
       <div
         className={

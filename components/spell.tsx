@@ -1,8 +1,8 @@
+import { gql } from "@apollo/client";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { type Spell } from "src/__generated__/graphql";
-import { gql } from "@apollo/client";
 
 export const DMSPELLS_SPELL = gql`
   fragment DMSpells_Spell on Spell {
