@@ -1,8 +1,8 @@
-import DMSpell, { DMSPELLS_SPELL } from "../components/spell";
+import DMSpell, { DMSPELLS_SPELL } from "components/spell";
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { type Spell } from "../src/__generated__/graphql";
-import LoadingIndicator from "../components/loading-indicator";
+import { type Spell } from "src/__generated__/graphql";
+import LoadingIndicator from "components/loading-indicator";
 
 const SpellsQuery = gql`
   query Spells($name: String, $limit: Int!, $skip: Int) {

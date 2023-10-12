@@ -1,5 +1,5 @@
 import React from "react";
-import { type Monster } from "../src/__generated__/graphql";
+import { type Monster } from "src/__generated__/graphql";
 import { gql } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";

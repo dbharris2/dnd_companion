@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { type Monster } from "../src/__generated__/graphql";
-import LoadingIndicator from "../components/loading-indicator";
-import DMMonster, { DMMONSTERS_MONSTER } from "../components/monster";
+import { type Monster } from "src/__generated__/graphql";
+import LoadingIndicator from "components/loading-indicator";
+import DMMonster, { DMMONSTERS_MONSTER } from "components/monster";
 
 const MonstersQuery = gql`
   query Monsters($name: String, $limit: Int!, $skip: Int) {
