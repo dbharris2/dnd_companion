@@ -31,3 +31,6 @@ yarn-error.log*
 
 # generated
 /src/__generated__/
+
+# ts build info
+/**/*.tsbuildinfo
