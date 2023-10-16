@@ -53,7 +53,7 @@ export default function Monsters(): React.JSX.Element {
   if (error != null) return <p>Oh no... {error.message}</p>;
 
   return (
-    <div className="flex flex-col h-screen space-y-2 items-center p-2">
+    <div className="flex flex-col h-screen space-y-2 p-2">
       <input
         className="w-full bg-zinc-200 border-solid border-2 focus:border-sky-300 rounded px-4"
         onChange={(e) => {
@@ -68,18 +68,14 @@ export default function Monsters(): React.JSX.Element {
         type="text"
       />
       <div
-        className={
-          data?.monsters.length === 0
-            ? "h-0"
-            : "h-full" + "w-full overflow-scroll space-y-2"
-        }
+        className={"flex flex-col items-center overflow-scroll space-y-2"}
         onScroll={handleScroll}
       >
         {data?.monsters.map((monster: Monster, index: number) => (
           <DMMonster key={index} monster={monster} />
         ))}
+        {loading ? <LoadingIndicator /> : null}
       </div>
-      {loading ? <LoadingIndicator /> : null}
     </div>
   );
 }
